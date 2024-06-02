@@ -1,0 +1,2 @@
+// Define the Destination interface
+
