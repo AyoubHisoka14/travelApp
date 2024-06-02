@@ -60,11 +60,11 @@ TravelApp is a web application designed to manage and track travels. It allows u
 
 ## Backend-Project structure
 
-- [src](we-ss-24-1116708-backend/src): This directory contains all the source code of this API.
-  - [index.ts](we-ss-24-1116708-backend/src/app.ts): Here the configuration of [Express] takes place.
-  - [entities](we-ss-24-1116708-backend/src/entities): The MikroORM entities are located here.
-  - [uploads](we-ss-24-1116708-backend/src/uploads): Here are all the Uploads of the User, in this case the images.
-  - [controllers](we-ss-24-1116708-backend/src/controller): The controller contains the logic.
+- [src](fwe-ss-24-1116708-backend/src): This directory contains all the source code of this API.
+  - [index.ts](fwe-ss-24-1116708-backend/src/app.ts): Here the configuration of [Express] takes place.
+  - [entities](fwe-ss-24-1116708-backend/src/entities): The MikroORM entities are located here.
+  - [uploads](fwe-ss-24-1116708-backend/src/uploads): Here are all the Uploads of the User, in this case the images.
+  - [controllers](fwe-ss-24-1116708-backend/src/controller): The controller contains the logic.
   Each router has his controller with the handler functions for the routes.
 
   #### Routes
