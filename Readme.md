@@ -1,117 +1,110 @@
-# Car-Sharing Refactoring
+# TravelApp
 
+## Overview
+
+TravelApp is a web application designed to manage and track travels. It allows users to add, view, update, and delete travel plans. The application also includes a currency conversion feature to assist users in planning their travel budgets in different currencies.
 
 ## Prerequisites
 
-- There needs to be a running mysql DB accessible.
+- There needs to be a running PostgreSQL DB accessible.
 - [Node.js](https://nodejs.org) runtime installed
 
-### Configuration
-
-Create a [.env file](./.env) in the root directory of this project.
-Here you can provide some configuration data like username and password of the database.
-Have a look at the [.env.example file](./.env.example) which provides an example configuration.
-For production, it is highly recommended to produce a random string with minimum 32 characters
-for the SECRET variable. You can do that for example with the command `openssl rand -base64 40`
-(produces string with length 40; openssl needs to be available on your system).
-
-## Build, Run & Deploy
-
-### The whole application deployment
-
-If you want to deploy the whole application, have a look at the
-[car-sharing deployment repository(https://code.fbi.h-da.de/stlsklei/car-sharing-deployment).
-
-### For development
+## Configuration
 
 #### Install modules
 
-- Install node modules: 
+- Install node modules for frontend: 
+    ```bash
+    cd we-ss-24-1116708-frontend 
+    ```
     ```bash
     npm install
     ```
-
+    
+- Install node modules for backend: 
+    ```bash
+    cd we-ss-24-1116708-backend 
+    ```
+    ```bash
+    npm install
+    ```
+    
 #### Start Database
 
-- If you have Docker installed and running, you can use the included docker-compose file in we3ve_database_dackend_dev  
-Navigate to the folder and run 
+- If you have Docker installed and running, you can use the included docker-compose file   
+    ```bash
+    cd we-ss-24-1116708-backend
+    ```
     ```bash
     docker compose up
     ```
     
 #### Start the server
 
+- It would be better to first clear all tables:
+    ```bash
+    npm run schema:fresh
+    ```
+
 - Run the server in development mode:
+    ```bash
+    npm run start:dev
+    ```
+
+#### Start the frontend
+
+- Navugate to the frontend folder and run the frontend :
     ```bash
     npm run dev
     ```
-- Watch and run in development mode (if you change a file, the server restarts automatically):
-    ```bash
-    npm run watch
-    ```
 
-#### Test and Liniting
+## Backend-Project structure
 
-To run the test, you have to create a [.env.test file](./.env.test) in the root directory of this project.
-Here you configure the app for the testing environment.
-
-- Run all tests:
-    ```bash
-    npm run test
-    ```
-- Run all tests and check the code coverage:
-    ```bash
-    npm run test-coverage
-    ```
-- To check if the linting rules have been followed:
-    ```bash
-    npm run lint
-    ```
-
-### For production
-
-#### Build the app
-```bash
-npm run build
-```
-
-#### Run the app
-```bash
-npm start
-```
-
-## Major npm packages
-- [typeorm](https://typeorm.io/): An [ORM](https://en.wikipedia.org/wiki/Object-relational_mapping)
-- [express](https://expressjs.com/): Web application framework
-- [nodemailer](https://nodemailer.com/): SMTP Client to send emails
-- [bcrypt](https://github.com/kelektiv/node.bcrypt.js#readme): Implementation of
-[bcrypt](https://en.wikipedia.org/wiki/Bcrypt) hashing function.
-- [class-validator](https://github.com/typestack/class-validator#readme): Provides decorators to validate
-entity field values
-- [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken#readme): Implementation of
-[JWT](https://datatracker.ietf.org/doc/html/rfc7519)
-
-## Project structure
-
-- [documents](./documents): Some documents for documentation purposes
-- [postman](./postman): Contains a [postman collection](./postman/api_documentation.json)
-and a related [postman environment](./postman/api_documentation_environment.json).
-You can import this json files in the [postman application](https://www.postman.com/).
-There you have a documentation to each API endpoint and can send requests to the backend.
-- [we3ve_database_backend_dev](./we3ve_database_backend_dev/): Contains a docker-compose file that sets up a MySQL docker container, preconfigured to work with the backend. 
-- [test](./test): The test folder contains all automated jest tests.
 - [src](./src): This directory contains all the source code of this API.
-  - [server.ts](./src/server.ts): This is the entrypoint of the backend.
-  It's setting up the database connection and starts the server.
-  - [app.ts](./src/app.ts): Here the configuration of [Express](https://expressjs.com/) takes place.
-  - [app-data-source.ts](./src/app-data-source.ts): This file contains the [TypeORM](https://typeorm.io/) configuration.
-  - [migrations](./src/migrations): This folder contains TypeORM migrations to migrate database structure changes.
-  - [views](./src/views): Here are some html pages (in [ejs](https://ejs.co/) format)
-  that the backend has to render on specific routes.
-  - [entities](./src/entities): The TypeORM entities are located here.
-  - [middleware](./src/middleware): Some middleware like error handler or authentication middleware.
-  - [routers](./src/routers): A router defines, which method is handled by which URI and HTTP method.
-  The index router decides, which one of the other routers has to handle the request.
-  Each (relevant) entity is handled by another router.
-  - [controllers](./src/controllers): The controller contains the logic.
+  - [index.ts](./src/app.ts): Here the configuration of [Express] takes place.
+  - [entities](./src/entities): The MikroORM entities are located here.
+  - [uploads](./src/uploads): Here are all the Uploads of the User, in this case the images.
+  - [controllers](./src/controller): The controller contains the logic.
   Each router has his controller with the handler functions for the routes.
+
+  #### Routes
+
+  - [/travels](./src/controller/travel.controller.ts): This Route is to manage all Travels. The TravelController manages retrieving, creating, editing and deleting travels 
+  - [/destinations](./src/controller/destination.controller.ts): This Route is to manage all Destinations. The DestinationController manages retrieving, creating, editing and deleting Destinations. 
+  - [/participants](./src/controller/participant.controller.ts): This Route is to manage all Participants. The ParticipantController manages retrieving, creating, editing and deleting Participants. 
+  - [/currency](./src/controller/currency.controller.ts): This Route is to manage currency conversion.
+
+## Frontend-Project structure
+
+- [src](./src): This directory contains all the source code.
+  - [pages](./src/pages): This folder containes all Pages of the App.
+  - [layout](./src/layout): The Main-Layout that is used in all Pages .
+  - [provider](./src/provider): They are used to provide crucial data of Entities that can be used across the App
+  - [appRoutes](./src/AppRoutes.tsx): All Routes are defined here including the their Pages. 
+
+
+## App Features:
+
+#### Travels:
+
+- The User can create new Travels, specifying them with a Name, image, Start date and End Date. Each Travel can have many Destinations and Participants. Travels could be created and deleted in the Travels-Page, and when clicking on a specific Page, all informations about this travel including its destinations and participants gets displayed in the Travels Details Page. The User can also do a search in the Travels Page. With two options for the search, name and/or Start Date, the displayed travels gets filtered.
+
+#### Destinations:
+
+- Every Destination has a name, image, Start Date and End Date. Destinations can be created in the Travels Details Page. All Destinations from all Travels are displayed in the Destinations Page. When clicking on a Destination, all informations about this destination including its Travel gets displayed in the Destination Details Page.
+
+#### Participants:
+
+- Every Participant has a name and an image. Participants could be created in the Travels Details Page. Each Participant can have many travels. All Participants from all Travels are displayed in the Participants Page. When clicking on a Participant, all informations about this participant including its Travels gets displayed in the Participant Details Page.
+
+#### Currency Conversion:
+
+- The User can convert amounts between different currencies using up-to-date exchange rates. The main currency is EUR and the user can specify the amount and currency to convert. 
+
+#### Freestyle task #1
+
+- For this Freestyle task, i decided to add a new page to display all Participants from all Travels (as mentioned above). And this gives the user the ability to manage all users, including deleting and editing specific Users, and having an overview about the travels of each User.
+
+#### Freestyle task #2
+
+- For this Freestyle task, i decided to add the posibility to convert EUR to another currency. The User can give the amount and the currency, and the result is gonna be the converted amount in the specified currency. For this i used an external API [ExchangeRate-API](https://www.exchangerate-api.com) that provides currency conversion rates for 161 currencies. For this i created a new Route [/currency](./src/controller/currency.controller.ts) that receives Requests with the amount and the currency, and using the external Data from the API, it converts the amount from EUR to the specified currency.
