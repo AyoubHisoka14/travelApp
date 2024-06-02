@@ -87,7 +87,7 @@ TravelApp is a web application designed to manage and track travels. It allows u
 
 #### Travels:
 
-- The User can create new Travels, specifying them with a Name, image, Start date and End Date. Each Travel can have many Destinations and Participants. Travels could be created and deleted in the Travels-Page, and when clicking on a specific Page, all informations about this travel including its destinations and participants gets displayed in the Travels Details Page. The User can also do a search in the Travels Page. With two options for the search, name and/or Start Date, the displayed travels gets filtered.
+- The User can create new Travels, specifying them with a Name, image, Start date and End Date. Each Travel can have many Destinations and Participants. Travels could be created and deleted in the Travels-Page, and when clicking on a specific Page, all informations about this travel including its destinations and participants gets displayed in the Travels Details Page. In the Travel Details Page, the User can add new Destinations, and new or already existing Participants. The User can also do a search in the Travels Page. With two options for the search, name and/or Start Date, the displayed travels gets filtered.
 
 #### Destinations:
 
