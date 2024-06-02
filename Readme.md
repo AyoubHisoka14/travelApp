@@ -82,6 +82,14 @@ TravelApp is a web application designed to manage and track travels. It allows u
   - [provider](./src/provider): They are used to provide crucial data of Entities that can be used across the App
   - [appRoutes](./src/AppRoutes.tsx): All Routes are defined here including the their Pages. 
 
+  #### Routes
+
+  - [/travels]: All Travels gets displayed.
+  - [/destinations]: All Destinations gets displayed.
+  - [/participants]: All Participants gets displayed.
+  - [/travelDetailsPage]: All Informations about a specific Travel gets displayed, including its Destinations and Participants.
+  - [/destinationDetailsPage]: All Informations about a specific Destination gets displayed, including its Travel.
+  - [/participantDetailsPage]: All Informations about a specific Participant gets displayed, including its Travels.
 
 ## App Features:
 
