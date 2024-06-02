@@ -64,7 +64,7 @@ TravelApp is a web application designed to manage and track travels. It allows u
   - [index.ts](fwe-ss-24-1116708-backend/src/app.ts): Here the configuration of [Express] takes place.
   - [entities](fwe-ss-24-1116708-backend/src/entities): The MikroORM entities are located here.
   - [uploads](fwe-ss-24-1116708-backend/src/uploads): Here are all the Uploads of the User, in this case the images.
-  - [controllers](fwe-ss-24-1116708-backend/src/controller): The controller contains the logic.
+  - [controllers](fwe-ss-24-1116708-backend\src\controller): The controller contains the logic.
   Each router has his controller with the handler functions for the routes.
 
   #### Routes
