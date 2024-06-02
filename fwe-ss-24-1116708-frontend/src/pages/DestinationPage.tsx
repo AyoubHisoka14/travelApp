@@ -72,7 +72,7 @@ export const DestinationPage = () => {
                         >
                             <Center>
                                 <Image
-                                    src={`http://localhost:3000${entry.image}`} // Use the imageUrl from the entry, or a fallback image
+                                    src={`http://localhost:3000${entry.image}`}
                                     alt={entry.name}
                                     borderRadius="md"
                                     mb={4}

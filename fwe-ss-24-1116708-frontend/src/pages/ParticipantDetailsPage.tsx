@@ -41,7 +41,7 @@ export const ParticipantDetailsPage = () => {
 
     useEffect(() => {
         if (!selectedParticipant) {
-            navigate('/participants'); // Redirect to participants page if no travel is selected
+            navigate('/participants'); // Redirect to participants page
             return;
         }
         fetchParticipantDetail();

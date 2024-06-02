@@ -1,8 +1,7 @@
 import {Router} from 'express';
 
 import {DI} from '../index';
-import {wrap} from "@mikro-orm/core";
-import {CreateParticipantDTO, CreateParticipantSchema, Participant} from "../entities/Participant";
+import {CreateParticipantSchema, Participant} from "../entities/Participant";
 import {upload} from "./travel.controller";
 
 const router = Router();
@@ -111,10 +110,10 @@ router.delete('/:id', async (req, res) => {
 
     const participant = await DI.participantRepository.findOne({id: req.params.id}, {});
     if (!participant) {
-        return res.status(403).json({errors: [`You can't delete this id`]});
+        return res.status(404).json({errors: [`Participant not found`]});
     }
 
     await DI.em.remove(participant).flush();
-    return res.status(204).send({});
+    return res.status(200).send({});
 });
 export const ParticipantController = router;

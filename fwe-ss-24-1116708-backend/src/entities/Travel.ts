@@ -27,7 +27,7 @@ export const CreateTravelSchema = object({
     description: string().required(),
     startDate: date().required(),
     endDate: date().required(),
-    //participants: array().required()
+
 });
 
 export type CreateTravelDTO = {
@@ -36,6 +36,5 @@ export type CreateTravelDTO = {
     startDate: Date;
     endDate: Date;
     image?: string;
-    //travelDestinations?: TravelDestination[];
-    //participants?: Participant[];
+
 };

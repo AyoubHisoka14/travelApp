@@ -67,8 +67,7 @@ export const ExistingParticipantModal = ({isOpen, onClose}: ExistingParticipantM
                             isClosable: true
                         });
                         return;
-                    }
-                    else if (!httpRes.ok) {
+                    } else if (!httpRes.ok) {
                         const res = await httpRes.json();
                         console.log(res.error);
                         return;

@@ -32,14 +32,7 @@ export const initializeServer = async () => {
     DI.destinationRepository = DI.orm.em.getRepository(TravelDestination);
     DI.participantRepository = DI.orm.em.getRepository(Participant);
 
-    // example middleware
-    /*
-    app.use((req, res, next) => {
-        console.info(`New request to ${req.path}`);
-        res.send("Welcome B");
-        next();
-    });
-    */
+
     // global middleware
     app.use(express.json());
     app.use((req, res, next) => RequestContext.create(DI.orm.em, next));

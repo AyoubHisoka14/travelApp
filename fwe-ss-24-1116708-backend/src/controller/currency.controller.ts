@@ -1,18 +1,12 @@
 import { Router } from 'express';
 
-import { DI } from '../index';
-import {CreateDestinationDTO, CreateDestinationSchema, TravelDestination} from "../entities/TravelDestination";
-import {wrap} from "@mikro-orm/core";
-import {upload} from "./travel.controller";
 
 const router = Router();
-const API_KEY = 'IBZzdLmM2yCYaXjgTZ6x';  // Your API key from amdoren
 
 
 router.post('/', async (req, res) => {
     const { currency, amount } = req.body;
 
-    // Validate the input
     if (!currency || !amount) {
         return res.status(400).json({ error: 'Currency and amount are required.' });
     }

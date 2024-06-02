@@ -34,5 +34,5 @@ export const CreateParticipantSchema = object({
 export type CreateParticipantDTO = {
     name: string;
     image?: string;
-    //travels?: Travel;
+
 };

@@ -165,7 +165,7 @@ const TravelDetailsPage = () => {
                     >
                         <Center>
                             <Image
-                                src={`http://localhost:3000${travelDetail.image}`} // Ensure this URL exists in your data
+                                src={`http://localhost:3000${travelDetail.image}`}
                                 alt={travelDetail.name}
                                 borderRadius="md"
                                 mb={4}
@@ -308,7 +308,7 @@ const TravelDetailsPage = () => {
                             <Box flex="1">
                                 <Center>
                                     <Image
-                                        src={`http://localhost:3000${entry.image}`} // Ensure this URL exists in your data
+                                        src={`http://localhost:3000${entry.image}`}
                                         alt={entry.name}
                                         borderRadius="md"
                                         mb={4}

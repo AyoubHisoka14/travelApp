@@ -18,7 +18,7 @@ import {date, object, string} from "yup";
 import {Travel} from "./TravelDetailsPage.tsx";
 import {formatDate} from "./TravelPage.tsx";
 
-export type TravelModalProps = Omit<ModalProps, "children">& {
+export type TravelModalProps = Omit<ModalProps, "children"> & {
     travel: Travel | null;
 };
 

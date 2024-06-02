@@ -78,7 +78,7 @@ export const ParticipantModal = ({isOpen, onClose, participant}: ParticipantModa
                             formData.append("image", file);
                         } else {
                             // If no new file is uploaded, send JSON
-                            formData = JSON.stringify({ name: values.name });
+                            formData = JSON.stringify({name: values.name});
                             headers = {
                                 'Content-Type': 'application/json'
                             };

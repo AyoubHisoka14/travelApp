@@ -32,5 +32,5 @@ export type CreateDestinationDTO = {
     startDate: Date;
     endDate: Date;
     image?: string;
-    //travels?: Travel[];
+
 };
