@@ -18,6 +18,7 @@ import {formatDate} from "./TravelPage.tsx";
 import {DestinationModal} from "./DestinationModal.tsx";
 import {ParticipantModal} from "./ParticipantModal.tsx";
 import {TravelModal} from "./TravelModal.tsx";
+import {ExistingParticipantModal} from "./ExistingParticipantModal.tsx";
 
 export interface Travel {
     id: string;
@@ -95,6 +96,7 @@ const TravelDetailsPage = () => {
     const navigate = useNavigate();
     const disclosureDestination = useDisclosure();
     const disclosureParticipant = useDisclosure();
+    const disclosureExistingParticipant = useDisclosure();
     const disclosureTravel = useDisclosure();
     const [selectedParticipant, setSelectedParticipant] = useState<Participant | null>(null);
     const [selectedDestination, setSelectedDestination] = useState<Destination | null>(null);
@@ -261,9 +263,16 @@ const TravelDetailsPage = () => {
                 </Heading>
                 <Box mt={4} mb={4}>
                     <Center>
-                        <Button bg="white" width="50%" onClick={disclosureParticipant.onOpen}>Add New
-                            Participant</Button>
+                        <Flex width="80%" justifyContent="center" gap={4}>
+                            <Button bg="white" width="50%" onClick={disclosureParticipant.onOpen}>
+                                Add New Participant
+                            </Button>
+                            <Button bg="white" width="50%" onClick={disclosureExistingParticipant.onOpen}>
+                                Add Existing Participant
+                            </Button>
+                        </Flex>
                     </Center>
+
                     <ParticipantModal
                         isOpen={disclosureParticipant.isOpen}
                         onClose={() => {
@@ -272,6 +281,14 @@ const TravelDetailsPage = () => {
                             setSelectedParticipant(null);
                         }}
                         participant={selectedParticipant}
+                    />
+                    <ExistingParticipantModal
+                        isOpen={disclosureExistingParticipant.isOpen}
+                        onClose={() => {
+                            disclosureExistingParticipant.onClose();
+                            fetchTravelDetail();
+                        }}
+
                     />
                 </Box>
                 <SimpleGrid columns={[1, 2, 3]} spacing={10} mt={4}>

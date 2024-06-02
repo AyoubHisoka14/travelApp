@@ -5,9 +5,9 @@ services:
     image: postgres
     restart: always
     environment:
-      POSTGRES_DB: diaryDB
-      POSTGRES_USER: diaryDBUser
-      POSTGRES_PASSWORD: fweSS22
+      POSTGRES_DB: myDB
+      POSTGRES_USER: travelDBUser
+      POSTGRES_PASSWORD: travel2022
     ports:
       - 5432:5432
     volumes:

@@ -25,39 +25,30 @@ router.post('/:id', upload.single('image'), async (req, res) => {
     // Validate input data
     const validatedData = await CreateParticipantSchema.validate(req.body);
 
-    // Check if participant name already exists
     const existingParticipant = await DI.participantRepository.findOne({name: validatedData.name});
     if (existingParticipant) {
-        return res.status(409).json({error: 'Participant with this name already exists'});
+        return res.status(400).json({error: 'Participant with this name already exists'});
     }
 
-    // Create the participant DTO including the image URL
     const createParticipantDTO = {
         ...validatedData,
         image: req.file ? `/uploads/${req.file.filename}` : undefined
     };
 
-    // Create a new participant entity
     const participant = new Participant(createParticipantDTO);
 
-    // Find the travel by ID
     const travel = await DI.travelRepository.findOne({id: req.params.id});
 
-    // Check if travel exists
     if (!travel) {
         return res.status(404).json({error: 'Travel not found'});
     }
 
-    // Add the travel to the participant's travels
     participant.travels.add(travel);
 
-    // Persist the participant entity
     await DI.em.persistAndFlush(participant);
 
-    // Populate the participant's travels to include in the response
     await DI.participantRepository.populate(participant, ['travels']);
 
-    // Send the response
     res.status(201).send(participant);
 
 });
@@ -65,19 +56,30 @@ router.post('/:id', upload.single('image'), async (req, res) => {
 
 router.post('/:id/:name', async (req, res) => {
 
+    const existingParticipant = await DI.participantRepository.findOne({name: req.params.name}, {
+        populate: ['travels'],
+    });
 
-    const existingParticipant = await DI.participantRepository.findOne({name: req.params.name})
     if (existingParticipant) {
-        const travel = await DI.travelRepository.findOne({id: req.params.id});
+        const travel = await DI.travelRepository.findOne({ id: req.params.id });
+
         if (travel) {
+            // Check if the participant is already part of the travel
+            const isParticipantInTravel = existingParticipant.travels.getItems().some(tr => tr.id === travel.id);
+
+            if (isParticipantInTravel) {
+                return res.status(400).json({ error: 'Participant is already part of this travel' });
+            }
+
             existingParticipant.travels.add(travel);
             await DI.em.flush();
             await DI.participantRepository.populate(existingParticipant, ['travels']);
-            res.status(201).send(existingParticipant);
-            return;
+            return res.status(201).send(existingParticipant);
+        } else {
+            return res.status(404).json({ error: 'Travel Not Found' });
         }
     } else {
-        throw new Error('Participant not found');
+        return res.status(404).json({ error: 'Participant Not Found' });
     }
 });
 
@@ -94,7 +96,6 @@ router.put('/:id', upload.single('image'), async (req, res) => {
         if (req.file) {
             participant.image = `/uploads/${req.file.filename}`;
         }
-        console.log("No pic");
 
         //wrap(participant).assign(req.body);
         await DI.em.flush();

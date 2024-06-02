@@ -110,7 +110,7 @@ export const ParticipantModal = ({isOpen, onClose, participant}: ParticipantModa
                         body: formData
                     });
 
-                    if (httpRes.status === 409) {
+                    if (httpRes.status === 400) {
                         toast({
                             title: "Error",
                             description: "This Name already exists",
