@@ -69,18 +69,18 @@ TravelApp is a web application designed to manage and track travels. It allows u
 
   #### Routes
 
-  - [/travels](./src/controller/travel.controller.ts): This Route is to manage all Travels. The TravelController manages retrieving, creating, editing and deleting travels 
-  - [/destinations](./src/controller/destination.controller.ts): This Route is to manage all Destinations. The DestinationController manages retrieving, creating, editing and deleting Destinations. 
-  - [/participants](./src/controller/participant.controller.ts): This Route is to manage all Participants. The ParticipantController manages retrieving, creating, editing and deleting Participants. 
-  - [/currency](./src/controller/currency.controller.ts): This Route is to manage currency conversion.
+  - [/travels](fwe-ss-24-1116708-backend/src/controller/travel.controller.ts): This Route is to manage all Travels. The TravelController manages retrieving, creating, editing and deleting travels 
+  - [/destinations](fwe-ss-24-1116708-backend/src/controller/destination.controller.ts): This Route is to manage all Destinations. The DestinationController manages retrieving, creating, editing and deleting Destinations. 
+  - [/participants](fwe-ss-24-1116708-backend/src/controller/participant.controller.ts): This Route is to manage all Participants. The ParticipantController manages retrieving, creating, editing and deleting Participants. 
+  - [/currency](fwe-ss-24-1116708-backend/src/controller/currency.controller.ts): This Route is to manage currency conversion.
 
 ## Frontend-Project structure
 
 - [src](./src): This directory contains all the source code.
-  - [pages](./src/pages): This folder containes all Pages of the App.
-  - [layout](./src/layout): The Main-Layout that is used in all Pages .
-  - [provider](./src/provider): They are used to provide crucial data of Entities that can be used across the App
-  - [appRoutes](./src/AppRoutes.tsx): All Routes are defined here including the their Pages. 
+  - [pages](fwe-ss-24-1116708-frontend/src/pages): This folder containes all Pages of the App.
+  - [layout](fwe-ss-24-1116708-frontend/src/layout): The Main-Layout that is used in all Pages .
+  - [provider](fwe-ss-24-1116708-frontend/src/provider): They are used to provide crucial data of Entities that can be used across the App
+  - [appRoutes](fwe-ss-24-1116708-frontend/src/AppRoutes.tsx): All Routes are defined here including the their Pages. 
 
   #### Routes
 
@@ -115,4 +115,4 @@ TravelApp is a web application designed to manage and track travels. It allows u
 
 #### Freestyle task #2
 
-- For this Freestyle task, i decided to add the posibility to convert EUR to another currency. The User can give the amount and the currency, and the result is gonna be the converted amount in the specified currency. For this i used an external API [ExchangeRate-API](https://www.exchangerate-api.com) that provides currency conversion rates for 161 currencies. For this i created a new Route [/currency](./src/controller/currency.controller.ts) that receives Requests with the amount and the currency, and using the external Data from the API, it converts the amount from EUR to the specified currency.
+- For this Freestyle task, i decided to add the posibility to convert EUR to another currency. The User can give the amount and the currency, and the result is gonna be the converted amount in the specified currency. For this i used an external API [ExchangeRate-API](https://www.exchangerate-api.com) that provides currency conversion rates for 161 currencies. For this i created a new Route [/currency](fwe-ss-24-1116708-backend/src/controller/currency.controller.ts) that receives Requests with the amount and the currency, and using the external Data from the API, it converts the amount from EUR to the specified currency.
