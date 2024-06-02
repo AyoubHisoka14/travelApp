@@ -15,7 +15,7 @@ TravelApp is a web application designed to manage and track travels. It allows u
 
 - Install node modules for frontend: 
     ```bash
-    cd we-ss-24-1116708-frontend 
+    cd fwe-ss-24-1116708-frontend 
     ```
     ```bash
     npm install
@@ -23,7 +23,7 @@ TravelApp is a web application designed to manage and track travels. It allows u
     
 - Install node modules for backend: 
     ```bash
-    cd we-ss-24-1116708-backend 
+    cd fwe-ss-24-1116708-backend 
     ```
     ```bash
     npm install
@@ -33,7 +33,7 @@ TravelApp is a web application designed to manage and track travels. It allows u
 
 - If you have Docker installed and running, you can use the included docker-compose file   
     ```bash
-    cd we-ss-24-1116708-backend
+    cd fwe-ss-24-1116708-backend
     ```
     ```bash
     docker compose up
@@ -53,7 +53,7 @@ TravelApp is a web application designed to manage and track travels. It allows u
 
 #### Start the frontend
 
-- Navugate to the frontend folder and run the frontend :
+- Navigate to the frontend folder and run the frontend :
     ```bash
     npm run dev
     ```
