@@ -89,7 +89,5 @@ router.delete('/:id', async (req, res) => {
     return res.status(204).send({});
 });
 
-// Define a static route to serve uploaded files
-//router.use('/uploads', express.static(path.join(__dirname, 'src', 'uploads')));
 
 export const TravelController = router;

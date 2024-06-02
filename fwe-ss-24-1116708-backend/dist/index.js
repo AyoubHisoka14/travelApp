@@ -12,6 +12,7 @@ const travel_controller_1 = require("./controller/travel.controller");
 const Travel_1 = require("./entities/Travel");
 const TravelDestination_1 = require("./entities/TravelDestination");
 const Participant_1 = require("./entities/Participant");
+const currency_controller_1 = require("./controller/currency.controller");
 const PORT = 3000;
 const app = (0, express_1.default)();
 exports.DI = {};
@@ -35,6 +36,7 @@ const initializeServer = async () => {
     app.use((req, res, next) => core_1.RequestContext.create(exports.DI.orm.em, next));
     app.use('/uploads', express_1.default.static('src/uploads/'));
     // routes
+    app.use('/currency', currency_controller_1.CurrencyController);
     app.use('/travels', travel_controller_1.TravelController);
     app.use('/destinations', destination_controller_1.DestinationController);
     app.use('/participants', participant_controller_1.ParticipantController);

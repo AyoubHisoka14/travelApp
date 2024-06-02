@@ -10,6 +10,7 @@ import {Travel} from "./entities/Travel";
 import {TravelDestination} from "./entities/TravelDestination";
 import {Participant} from "./entities/Participant";
 import path from "path";
+import {CurrencyController} from "./controller/currency.controller";
 
 const PORT = 3000;
 const app = express();
@@ -45,6 +46,7 @@ export const initializeServer = async () => {
 
     app.use('/uploads', express.static('src/uploads/'));
     // routes
+    app.use('/currency', CurrencyController);
     app.use('/travels', TravelController);
     app.use('/destinations', DestinationController);
     app.use('/participants', ParticipantController, );

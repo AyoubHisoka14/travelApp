@@ -6,7 +6,8 @@ import {
     Button,
     Center,
     SimpleGrid,
-    useDisclosure, Flex, InputGroup, InputLeftElement, Input,
+    useToast,
+    useDisclosure, Flex, InputGroup, InputLeftElement, Input, FormControl, FormLabel, Select,
 } from "@chakra-ui/react";
 import {useTravel} from "../provider/TravelProvider.tsx";
 import {BaseLayout} from "../layout/BaseLayout.tsx";
@@ -14,6 +15,7 @@ import {TravelModal} from "./TravelModal.tsx";
 import {useNavigate} from "react-router-dom";
 import {onDeleteTravel, Travel} from "./TravelDetailsPage.tsx";
 import { SearchIcon, CalendarIcon } from '@chakra-ui/icons';
+import {currencyList} from "./currency.ts";
 
 
 export const formatDate = (dateString: string) => {
@@ -24,6 +26,7 @@ export const formatDate = (dateString: string) => {
     return `${year}-${month}-${day}`;
 };
 
+
 export const TravelPage = () => {
 
     const [travels, setTravels] = useState<Travel[]>([]);
@@ -32,7 +35,9 @@ export const TravelPage = () => {
     const navigate = useNavigate();
     const [searchName, setSearchName] = useState<string>('');
     const [searchStartDate, setSearchStartDate] = useState<string>('');
-
+    const [amount, setAmount] = useState<string>('');
+    const [currency, setCurrency] = useState<string>('');
+    const toast = useToast();
 
     const loadTravels = useCallback(async () => {
         try {
@@ -50,9 +55,12 @@ export const TravelPage = () => {
         }
     }, []);
 
+
     useEffect(() => {
         loadTravels();
     }, [loadTravels]);
+
+
 
     const onViewTravel = (entry: Travel) => {
         setSelectedTravel(entry.id);
@@ -64,6 +72,56 @@ export const TravelPage = () => {
         loadTravels();
     };
 
+    const handleCurrencyConversion = async () => {
+        if (!amount || !currency) {
+            toast({
+                title: "Error",
+                description: "Please enter an amount and select a currency.",
+                status: "error",
+                duration: 3000,
+                isClosable: true,
+            });
+            return;
+        }
+
+
+            //const response = await fetch(`/api/currency?to=${currency}&amount=${amount}`);
+
+            const response = await fetch("/api/currency", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    amount: amount,
+                    currency: currency
+                })
+            });
+
+            const data = await response.json();
+
+
+            if (data.error) {
+                toast({
+                    title: "Error",
+                    description: "Something went wrong",
+                    status: "error",
+                    duration: 3000,
+                    isClosable: true,
+                });
+                return;
+            }
+
+        toast({
+            title: "Converted Amount",
+            description: `${data} ${currency}`,
+            status: "success",
+            duration: 5000,
+            isClosable: true,
+        });
+
+    };
+
     const filteredTravels = travels.filter((travel) => {
         return (
             (searchName === '' || travel.name.toLowerCase().includes(searchName.toLowerCase())) &&
@@ -73,6 +131,32 @@ export const TravelPage = () => {
 
     return (
         <BaseLayout>
+
+            <Box mb={4} mt="8">
+                <Flex width="80%" mx="auto" justifyContent="space-between" alignItems="center">
+                    <FormControl flex="1" mr={2} >
+                        <FormLabel>Amount in EUR</FormLabel>
+                        <Input
+                            type="number"
+                            bg="white"
+                            value={amount}
+                            onChange={(e) => setAmount(e.target.value)}
+                        />
+                    </FormControl>
+                    <FormControl flex="1" ml={2}>
+                        <FormLabel>Target Currency</FormLabel>
+                        <Select placeholder="Select currency" onChange={(e) => setCurrency(e.target.value)} bg="white">
+                            {currencyList.map((curr) => (
+                                <option key={curr.currency} value={curr.currency}>
+                                    {curr.currency} - {curr.description}
+                                </option>
+                            ))}
+                        </Select>
+                    </FormControl>
+                    <Button onClick={handleCurrencyConversion} ml={2} alignSelf="flex-end">Convert</Button>
+                </Flex>
+
+            </Box>
 
             <Box mb={4} mt="8">
                 <Flex width="80%" mx="auto" justifyContent="space-between" alignItems="center">
@@ -96,6 +180,8 @@ export const TravelPage = () => {
                     </InputGroup>
                 </Flex>
             </Box>
+
+
 
             <Box mt={4} mb={4}>
                 <Center>

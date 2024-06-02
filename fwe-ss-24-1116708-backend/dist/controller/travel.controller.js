@@ -78,6 +78,4 @@ router.delete('/:id', async (req, res) => {
     await index_1.DI.em.remove(travel).flush();
     return res.status(204).send({});
 });
-// Define a static route to serve uploaded files
-//router.use('/uploads', express.static(path.join(__dirname, 'src', 'uploads')));
 exports.TravelController = router;
