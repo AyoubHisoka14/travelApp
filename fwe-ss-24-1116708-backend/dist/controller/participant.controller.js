@@ -85,9 +85,9 @@ router.put('/:id', travel_controller_1.upload.single('image'), async (req, res) 
 router.delete('/:id', async (req, res) => {
     const participant = await index_1.DI.participantRepository.findOne({ id: req.params.id }, {});
     if (!participant) {
-        return res.status(403).json({ errors: [`You can't delete this id`] });
+        return res.status(404).json({ errors: [`Participant not found`] });
     }
     await index_1.DI.em.remove(participant).flush();
-    return res.status(204).send({});
+    return res.status(200).send({});
 });
 exports.ParticipantController = router;

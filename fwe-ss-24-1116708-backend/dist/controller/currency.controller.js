@@ -3,10 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CurrencyController = void 0;
 const express_1 = require("express");
 const router = (0, express_1.Router)();
-const API_KEY = 'IBZzdLmM2yCYaXjgTZ6x'; // Your API key from amdoren
 router.post('/', async (req, res) => {
     const { currency, amount } = req.body;
-    // Validate the input
     if (!currency || !amount) {
         return res.status(400).json({ error: 'Currency and amount are required.' });
     }

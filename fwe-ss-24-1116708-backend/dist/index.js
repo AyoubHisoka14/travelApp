@@ -23,14 +23,6 @@ const initializeServer = async () => {
     exports.DI.travelRepository = exports.DI.orm.em.getRepository(Travel_1.Travel);
     exports.DI.destinationRepository = exports.DI.orm.em.getRepository(TravelDestination_1.TravelDestination);
     exports.DI.participantRepository = exports.DI.orm.em.getRepository(Participant_1.Participant);
-    // example middleware
-    /*
-    app.use((req, res, next) => {
-        console.info(`New request to ${req.path}`);
-        res.send("Welcome B");
-        next();
-    });
-    */
     // global middleware
     app.use(express_1.default.json());
     app.use((req, res, next) => core_1.RequestContext.create(exports.DI.orm.em, next));

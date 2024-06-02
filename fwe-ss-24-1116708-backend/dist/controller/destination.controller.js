@@ -60,9 +60,9 @@ router.delete('/:id', async (req, res) => {
     const destination = await index_1.DI.destinationRepository.findOne({ id: req.params.id
     });
     if (!destination) {
-        return res.status(403).json({ errors: [`You can't delete this id`] });
+        return res.status(404).json({ errors: [`Destination Not Found`] });
     }
     await index_1.DI.em.remove(destination).flush();
-    return res.status(204).send({});
+    return res.status(201).send({});
 });
 exports.DestinationController = router;

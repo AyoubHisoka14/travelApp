@@ -45,5 +45,4 @@ exports.CreateTravelSchema = (0, yup_1.object)({
     description: (0, yup_1.string)().required(),
     startDate: (0, yup_1.date)().required(),
     endDate: (0, yup_1.date)().required(),
-    //participants: array().required()
 });
