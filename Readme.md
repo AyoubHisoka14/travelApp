@@ -15,7 +15,7 @@ TravelApp is a web application designed to manage and track travels. It allows u
 
 - Install node modules for frontend: 
     ```bash
-    cd fwe-ss-24-1116708-frontend 
+    cd frontend 
     ```
     ```bash
     npm install
@@ -77,10 +77,10 @@ TravelApp is a web application designed to manage and track travels. It allows u
 ## Frontend-Project structure
 
 - [src](./src): This directory contains all the source code.
-  - [pages](fwe-ss-24-1116708-frontend/src/pages): This folder containes all Pages of the App.
-  - [layout](fwe-ss-24-1116708-frontend/src/layout): The Main-Layout that is used in all Pages .
-  - [provider](fwe-ss-24-1116708-frontend/src/provider): They are used to provide crucial data of Entities that can be used across the App
-  - [appRoutes](fwe-ss-24-1116708-frontend/src/AppRoutes.tsx): All Routes are defined here including the their Pages. 
+  - [pages](frontend/src/pages): This folder containes all Pages of the App.
+  - [layout](frontend/src/layout): The Main-Layout that is used in all Pages .
+  - [provider](frontend/src/provider): They are used to provide crucial data of Entities that can be used across the App
+  - [appRoutes](frontend/src/AppRoutes.tsx): All Routes are defined here including the their Pages. 
 
   #### Routes
 
