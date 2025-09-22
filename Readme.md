@@ -23,7 +23,7 @@ TravelApp is a web application designed to manage and track travels. It allows u
     
 - Install node modules for backend: 
     ```bash
-    cd fwe-ss-24-1116708-backend 
+    cd backend 
     ```
     ```bash
     npm install
@@ -33,7 +33,7 @@ TravelApp is a web application designed to manage and track travels. It allows u
 
 - If you have Docker installed and running, you can use the included docker-compose file   
     ```bash
-    cd fwe-ss-24-1116708-backend
+    cd backend
     ```
     ```bash
     docker compose up
@@ -60,19 +60,19 @@ TravelApp is a web application designed to manage and track travels. It allows u
 
 ## Backend-Project structure
 
-- [src](fwe-ss-24-1116708-backend/src): This directory contains all the source code of this API.
-  - [index.ts](fwe-ss-24-1116708-backend/src/index.ts): Here the configuration of [Express] takes place.
-  - [entities](fwe-ss-24-1116708-backend/src/entities): The MikroORM entities are located here.
-  - [uploads](fwe-ss-24-1116708-backend/src/uploads): Here are all the Uploads of the User, in this case the images.
-  - [controllers](fwe-ss-24-1116708-backend/src/controller): The controller contains the logic.
+- [src](backend/src): This directory contains all the source code of this API.
+  - [index.ts](backend/src/index.ts): Here the configuration of [Express] takes place.
+  - [entities](backend/src/entities): The MikroORM entities are located here.
+  - [uploads](backend/src/uploads): Here are all the Uploads of the User, in this case the images.
+  - [controllers](backend/src/controller): The controller contains the logic.
   Each router has his controller with the handler functions for the routes.
 
   #### Routes
 
-  - [/travels](fwe-ss-24-1116708-backend/src/controller/travel.controller.ts): This Route is to manage all Travels. The TravelController manages retrieving, creating, editing and deleting travels 
-  - [/destinations](fwe-ss-24-1116708-backend/src/controller/destination.controller.ts): This Route is to manage all Destinations. The DestinationController manages retrieving, creating, editing and deleting Destinations. 
-  - [/participants](fwe-ss-24-1116708-backend/src/controller/participant.controller.ts): This Route is to manage all Participants. The ParticipantController manages retrieving, creating, editing and deleting Participants. 
-  - [/currency](fwe-ss-24-1116708-backend/src/controller/currency.controller.ts): This Route is to manage currency conversion.
+  - [/travels](backend/src/controller/travel.controller.ts): This Route is to manage all Travels. The TravelController manages retrieving, creating, editing and deleting travels 
+  - [/destinations](backend/src/controller/destination.controller.ts): This Route is to manage all Destinations. The DestinationController manages retrieving, creating, editing and deleting Destinations. 
+  - [/participants](backend/src/controller/participant.controller.ts): This Route is to manage all Participants. The ParticipantController manages retrieving, creating, editing and deleting Participants. 
+  - [/currency](backend/src/controller/currency.controller.ts): This Route is to manage currency conversion.
 
 ## Frontend-Project structure
 
@@ -115,4 +115,4 @@ TravelApp is a web application designed to manage and track travels. It allows u
 
 #### Freestyle task #2
 
-- For this Freestyle task, i decided to add the posibility to convert EUR to another currency. The User can give the amount and the currency, and the result is gonna be the converted amount in the specified currency. For this i used an external API [ExchangeRate-API](https://www.exchangerate-api.com) that provides currency conversion rates for 161 currencies. For this i created a new Route [/currency](fwe-ss-24-1116708-backend/src/controller/currency.controller.ts) that receives Requests with the amount and the currency, and using the external Data from the API, it converts the amount from EUR to the specified currency.
+- For this Freestyle task, i decided to add the posibility to convert EUR to another currency. The User can give the amount and the currency, and the result is gonna be the converted amount in the specified currency. For this i used an external API [ExchangeRate-API](https://www.exchangerate-api.com) that provides currency conversion rates for 161 currencies. For this i created a new Route [/currency](backend/src/controller/currency.controller.ts) that receives Requests with the amount and the currency, and using the external Data from the API, it converts the amount from EUR to the specified currency.
