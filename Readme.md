@@ -108,11 +108,4 @@ TravelApp is a web application designed to manage and track travels. It allows u
 #### Currency Conversion:
 
 - The User can convert amounts between different currencies using up-to-date exchange rates. The main currency is EUR and the user can specify the amount and currency to convert. 
-
-#### Freestyle task #1
-
-- For this Freestyle task, i decided to add a new page to display all Participants from all Travels (as mentioned above). And this gives the user the ability to manage all users, including deleting and editing specific Users, and having an overview about the travels of each User.
-
-#### Freestyle task #2
-
-- For this Freestyle task, i decided to add the posibility to convert EUR to another currency. The User can give the amount and the currency, and the result is gonna be the converted amount in the specified currency. For this i used an external API [ExchangeRate-API](https://www.exchangerate-api.com) that provides currency conversion rates for 161 currencies. For this i created a new Route [/currency](backend/src/controller/currency.controller.ts) that receives Requests with the amount and the currency, and using the external Data from the API, it converts the amount from EUR to the specified currency.
+- The User can give the amount and the currency, and the result is gonna be the converted amount in the specified currency. For this i used an external API [ExchangeRate-API](https://www.exchangerate-api.com) that provides currency conversion rates for 161 currencies. For this i created a new Route [/currency](backend/src/controller/currency.controller.ts) that receives Requests with the amount and the currency, and using the external Data from the API, it converts the amount from EUR to the specified currency.
